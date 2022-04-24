@@ -27,8 +27,7 @@ export default function Productes() {
   const getProducts = () => {
     dispatch({ type: "LOADING", payload: true });
     dispatch({ type: "CHANGE", payload: false });
-    axios
-      .get(`/api/products?limit=8&sort=-createdAt`)
+    fetch(`/api/products?limit=8&sort=-createdAt`, { method: "GET" })
       .then(res => {
         dispatch({ type: "LOADING", payload: false });
         dispatch({ type: "GET_PRODUCT", payload: res.data.products });
